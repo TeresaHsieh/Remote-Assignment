@@ -170,10 +170,9 @@ input #button{
     flex-direction: row;
     justify-content: center;
     align-content: space-between;
-    /* background-color: red; */
     margin-top: 50px;
-    width:100%
-    
+    width:100%;
+    /* background-color: red; */
 }
 
 .secondbox{
@@ -181,8 +180,6 @@ input #button{
     height: 150px;
     margin: auto;
     text-align: center;
-   
-
 }
 
 
@@ -229,7 +226,6 @@ input #button{
         padding-right: 40px;
     }
 
-    .box-container,
     .second-container {
         display: flex;
         flex-direction: column;
@@ -237,8 +233,23 @@ input #button{
         align-content: space-around;
     }
 
+    .box-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
 
-    .box,
+
+    .box {
+        width: 450px;
+        /* margin: 15px;
+        /* flex-basis: 100px;
+        flex: 1 1 0; */
+        width: 90%;
+        margin-bottom: 20px; 
+    }
+
     .secondbox {
         width: 450px;
         /* margin: 15px;
@@ -341,7 +352,6 @@ input #button{
         display: none;
     }
 
-    .box-container,
     .second-container {
         display: flex;
         flex-direction: row;
@@ -350,8 +360,22 @@ input #button{
         height: 400px;
     }
 
-    .box,
+
+    .box-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 400px;
+    }
+
     .secondbox {
+         /* margin: 15px; */
+         align-items: center;
+         width: 600px;
+         /* flex-basis: 600px; */
+    }
+    .box {
          /* margin: 15px; */
          align-items: center;
          width: 600px;
