@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        
+
+</head>
+
+<body>
+    <h1>Welcome to sum.html</h1>
+    <div id=demo>
+        <form>
+            <p>Please enter a number</p>
+            <input type="number" id="number" style="background-color: lightcoral"></input>
+            <button type="submit" onclick="calculate()" style="background-color: lightcyan">submit</button>
+        </form>
+
+    <div id="answer"></div>
+
+
+    </div>
+    <p>Click the "submit" button to get the sum.</p>
+   
+    <script>
+            //3-4
+            //做一個可以輸入數值並提交的地方
+            //抓 user 輸入的數字（如果不是正整數要提醒重填）
+            //傳遞網址結尾為 user 的數字給 server，請 server 去該頁面抓 sum 值回來
+            //respond 值給 user 
+            
+            function calculate() {
+                var userInput = document.getElementById("number").value;
+            var inputReq = new XMLHttpRequest();
+                inputReq.onreadystatechange = function () {
+                    if (inputReq.readyState === 4) {
+                        document.getElementById("answer").innerHTML = inputReq.responseText
+                    }
+                }
+                inputReq.open("GET", "http://localhost:3000/getData?number="+userInput);
+            inputReq.send();   
+            }
+            
+    
+            //3-3
+            const Http = new XMLHttpRequest();
+            const url = 'http://localhost:3000/getData?number=10';
+            Http.open("GET", url);
+            Http.send();
+    
+            Http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(Http.responseText)
+                }
+            }
+    
+        </script>
+</body>
+
+</html>
