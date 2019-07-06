@@ -24,9 +24,9 @@ header {
 
 .welcome {
     background-color: rgb(205, 221, 238); 
-    height: 150px;
+    height: 180px;
     text-align: center;
-    padding: 2em;
+    padding: 2em 1em;
 }
 
 .section-title {
