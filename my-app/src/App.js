@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './week4react.css';
+import new_menu from './new_menu.svg';
 
 const Header = props => {
   return (
@@ -22,7 +23,7 @@ const Header = props => {
 const Button = props => {
   return (
     <div onClick={props.click}>
-      <input id="button" type="image" src="./new_menu.svg" width="45px"
+      <input id="button" type="image" src={new_menu} width="45px"
         height="45px" />
     </div>
   );
@@ -40,7 +41,7 @@ const CloseButton = props => {
 const Sidebar = props => {
   return (
     <div id="mySidebar" className="sidebar">
-      <CloseButton />
+      <CloseButton click={props.onClose}/>
       {/* <a href="javascript:void(0)" className="closebtn" > × </a> */}
       <ul>
         <a href="#">Item 1</a>
@@ -165,20 +166,20 @@ class App extends React.Component {
   }
 
   render() {
-
-    let sidebar;
-    let closeButton;
-
-    if (this.state.sideBarOpen) {
-      sidebar = <Sidebar />;
-      closeButton = <CloseButton click={this.closeButtonClickHandler} />
+    let {sideBarOpen} = this.state;
+    // if (sideBarOpen) {
+    //   sidebar = <Sidebar />;
+    //   closeButton = <CloseButton click={this.closeButtonClickHandler} />
       
-    }
+    // }
     return (
       <div className="week4" style={{ height: "100%" }}>
         <Header sidebarClickHandler={this.sidebarToggleClickHandler}/>
-        {sidebar}
-        {closeButton}
+        { sideBarOpen? 
+        (<div>
+          <Sidebar onClose={this.closeButtonClickHandler}/>
+        </div>) : 
+        null }
         <Welcome />
         <SectionTitle />
         <BoxContainer />
