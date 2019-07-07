@@ -33,16 +33,25 @@ function ajax(src, callback) {
 }
 
 function render(data) {
-    // 如何呈現 ajax 拿回來的資料
-    let info = document.createElement("li");
-    info.textContent = data;
-    let list = document.getElementById("jasonInfo");
-    list.appendChild(info);
+    // 第二個作業要能夠把我提供的三個產品資料都顯示出來
+    // 盡量使用 createElement 和 appendChild 這兩個方式來完成畫面的處理。
+
+    for (i = 0; i < data.length; i += 1) {
+        let list = document.getElementById("jasonInfo");
+        let info = document.createElement("li");
+        info.textContent = "name: " + JSON.parse(data)[i].name + "   " + "price: " + JSON.parse(data)[i].price + "   " + "description: " + JSON.parse(data)[i].description;
+        list.appendChild(info);
+    }
+
+    // let list = document.getElementById("jasonInfo");
+    // let info = document.createElement("li");
+    // info.textContent = data;
+    // list.appendChild(info);
 }
 
-ajax("https://cwpeng.github.io/live-records-samples/data/products.json", 
-function (response) {render(response);});
+ajax("https://cwpeng.github.io/live-records-samples/data/products.json",
+    function (response) { render(response); });
     // you should get product information in JSON format and render data in the page
 
     // 先看最後被 call 的 function（ajax），電腦會先執行，上面的兩個 function 只是表述
-    /* ajax 是執行上面 ajax function，裡面有兩個參數：URL 與一個 function。回到最上面看 ajax function，可以知道當狀態是 OK 的時候，會執行某個動作 render function 裡的動作*/ 
+/* ajax 是執行上面 ajax function，裡面有兩個參數：URL 與一個 function。回到最上面看 ajax function，可以知道當狀態是 OK 的時候，會執行某個動作 render function 裡的動作*/
